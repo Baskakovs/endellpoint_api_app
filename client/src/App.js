@@ -10,6 +10,7 @@ import Contact from "components/forms/SimpleContactUs";
 import AdminPage from "components/admin/AdminPage";
 import Login from "components/admin/Login";
 import Nav from "components/admin/Nav";
+import NewsAdmin from "components/admin/NewsAdmin";
 
 
 /*
@@ -122,14 +123,20 @@ export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
 
-  const [currentAdmin, setCurrentAdmin] = useState("")
+const [currentAdmin, setCurrentAdmin] = useState("")
+//HANDLE LOGOUT
+//=============
+function logoutCurrentUser(){
+  setCurrentAdmin(null)
+}
   return (
     <>
       <Router>
-      <AdminContext.Provider value={{setCurrentAdmin}}>
+      <AdminContext.Provider value={{setCurrentAdmin, logoutCurrentUser}}>
         <Routes>
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/login" element={<Login />} />
+          <Route exact path="/admin/news" element={<NewsAdmin />} />
         </Routes>
       </AdminContext.Provider>
       <GlobalStyles/>

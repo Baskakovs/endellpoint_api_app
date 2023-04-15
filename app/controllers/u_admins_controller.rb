@@ -1,0 +1,2 @@
+class UAdminsController < ApplicationController
+end

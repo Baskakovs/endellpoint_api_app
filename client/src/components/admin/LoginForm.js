@@ -1,6 +1,7 @@
 //Importing dependencies
 import React, {useState, useContext} from 'react';
 import { AdminContext } from 'App';
+import { useNavigate } from 'react-router-dom';
 function LoginForm({setErrors}){
 
     const {setCurrentAdmin} = useContext(AdminContext)
@@ -21,6 +22,8 @@ function LoginForm({setErrors}){
         })
     }
 
+    const navigate = useNavigate()
+
     //SUBMITTING THE FORM TO THE BACKEND
     //==================================
     function handleSubmit(e){
@@ -32,7 +35,11 @@ function LoginForm({setErrors}){
         })
         .then(res => {
             if(res.ok){
-                res.json().then(user => setCurrentAdmin(user))
+                res.json().then(user => {
+                    setCurrentAdmin(user)
+                    navigate('/admin')
+                })
+
             }else{
                 res.json().then(e => setErrors([e.error]))
             }

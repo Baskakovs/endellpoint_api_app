@@ -1,6 +1,7 @@
 //Importing dependencies
 import React, {useState, useContext} from 'react'
 import { AdminContext } from 'App'
+import { useNavigate } from 'react-router-dom'
 
 function SignupForm({setErrors}){
 
@@ -25,6 +26,8 @@ function SignupForm({setErrors}){
         setErrors([])
     }
 
+    const navigate = useNavigate()
+
     //SUBMITTING SIGNUP TO THE BACK-END
     //=================================
     let validity = true
@@ -33,14 +36,16 @@ function SignupForm({setErrors}){
         validateInputs()
         if(validity){
             fetch('http://localhost:4000/admin',{
-                method: "PUT",
-                mode: 'no-cors',
+                method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(signUpForm)
             })
             .then(res => {
                 if(res.ok){
-                    res.json().then(user => setCurrentAdmin(user))
+                    res.json().then(user => {
+                        setCurrentAdmin(user)
+                        navigate('/admin')
+                    })
                 }else{
                     res.json().then(e =>setErrors(e.errors))
                 }

@@ -1,0 +1,2 @@
+class UAdmin < ApplicationRecord
+end

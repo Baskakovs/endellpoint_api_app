@@ -1,11 +1,17 @@
 {
-  "name": "treact",
+  "name": "react-rails-api-project-template-client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "cors": "^2.8.5",
+    "cors-anywhere": "^0.4.4",
     "feather-icons": "^4.29.0",
     "framer-motion": "^7.3.2",
     "react": "^18.0.0",
@@ -23,23 +29,15 @@
     "twin.macro": "^3.0.0-rc.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "yarn build && netlify deploy --prod --dir=build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app",
-    "overrides": [
-      {
-        "files": [
-          "src/**/*.js"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
+    "extends": [
+      "react-app",
+      "react-app/jest"
     ]
   },
   "browserslist": {

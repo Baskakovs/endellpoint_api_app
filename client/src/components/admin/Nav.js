@@ -1,22 +1,26 @@
 import {NavLink} from 'react-router-dom'
 import { useContext } from 'react'
+import { AdminContext } from 'App'
+import { useNavigate } from 'react-router-dom'
 // import { AppContext } from '../App'
 function Nav({handleLogout}){
-    // const {currentUser, logoutCurrentUser} = useContext(AppContext)
+    const {currentUser, logoutCurrentUser} = useContext(AdminContext)
 
-    // function handleLogout(e){
-    //     e.preventDefault()
-    //     fetch('/logout', {
-    //         method: "DELETE"
-    //     })
-    //     .then(res => {
-    //         if(res.status == 204){
-    //             logoutCurrentUser()
-    //         }else{
-    //             alert("Something went wrong")
-    //         }
-    //     })
-    // }
+    const navigate = useNavigate()
+    function handleLogout(e){
+        e.preventDefault()
+        fetch('/logout', {
+            method: "DELETE"
+        })
+        .then(res => {
+            if(res.status == 204){
+                logoutCurrentUser()
+                navigate('/login')
+            }else{
+                alert("Something went wrong")
+            }
+        })
+    }
     return (
         <>
             {!true ? 
@@ -36,17 +40,12 @@ function Nav({handleLogout}){
                     </li>
                     <NavLink to="/my_books">
                         <li className="nav-li" key={2}>
-                            <button className={"btn-nav"}>My Books</button>
+                            <button className={"btn-nav"}>Google Maps</button>
                         </li>
                     </NavLink>
-                    <NavLink to="/my_reviews">
+                    <NavLink to="/admin/news">
                         <li className="nav-li" key={3}>
-                            <button className={"btn-nav"}>My Reviews</button>
-                        </li>
-                    </NavLink>
-                    <NavLink to="/">
-                        <li className="nav-li" key={4}>
-                            <button className={"btn-nav"}>Home</button>
+                            <button className={"btn-nav"}>News</button>
                         </li>
                     </NavLink>
                 </ul>
