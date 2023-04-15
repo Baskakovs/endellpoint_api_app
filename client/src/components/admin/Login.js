@@ -11,6 +11,8 @@ function Login(){
     const [login, setLogin] = useState(true)
 
     useEffect(()=>{setErrors()},[login])
+
+    console.log(errors)
     
     return(
         <div className="container two-col height-100 align-content-center">

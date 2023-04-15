@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
-  resource :admin, only: [:create]
-  post '/admin', to: 'sessions#create'
-  get '/admin', to: 'users#show'
-  delete '/admin', to: 'sessions#destroy'
+  resource :admin, only: [:update]
+  post '/login', to: 'sessions#create'
 end

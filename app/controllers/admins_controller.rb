@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
-    skip_before_action :authorized, only: :create
-    def create
+    skip_before_action :authorized, only: [:update]
+    def update
         admin = Admin.find_by(email: params[:email])
         if admin
             admin.update!(password: params[:password])

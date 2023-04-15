@@ -32,8 +32,9 @@ function SignupForm({setErrors}){
         e.preventDefault()
         validateInputs()
         if(validity){
-            fetch('/users',{
-                method: "POST",
+            fetch('http://localhost:4000/admin',{
+                method: "PUT",
+                mode: 'no-cors',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(signUpForm)
             })
@@ -46,6 +47,7 @@ function SignupForm({setErrors}){
             })
         }
     }
+
 
     //Validating Inputs
     function validateInputs(){
