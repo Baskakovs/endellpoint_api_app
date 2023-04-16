@@ -9,11 +9,10 @@ import LandingPage from "LandingPage";
 import Contact from "components/forms/SimpleContactUs";
 import AdminPage from "components/admin/AdminPage";
 import Login from "components/admin/Login";
-import Nav from "components/admin/Nav";
 import NewsAdmin from "components/admin/NewsAdmin";
+import CreateNews from "components/admin/CreateNews";
 
-
-/*
+/*x
  * This is the entry point component of this project. You can change the below exported default App component to any of
  * the prebuilt landing page components by uncommenting their import and export lines respectively.
  * See one of the landing page components to better understand how to import and render different components (Always
@@ -138,6 +137,7 @@ function logoutCurrentUser(){
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/login" element={<Login />} />
           <Route exact path="/admin/news" element={<NewsAdmin />} />
+          <Route exact path="/admin/news/create" element={<CreateNews />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/contact-us" element={<Contact />}/>
         </Routes>

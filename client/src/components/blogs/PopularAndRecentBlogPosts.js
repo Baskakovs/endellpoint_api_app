@@ -146,18 +146,6 @@ export default () => {
     },
   ]
 
-  fetch('/news', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-      }
-    })
-    .then(res => {
-        if(res.ok){
-
-        }
-      })
-
 
   return (
     <Container>

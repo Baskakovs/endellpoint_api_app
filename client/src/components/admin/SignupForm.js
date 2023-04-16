@@ -65,8 +65,6 @@ function SignupForm({setErrors}){
         setErrors(errors)
     }
 
-    console.log("signUpForm: ", signUpForm)
-
     return(
         <>
         <form className={"form"} onSubmit={handleSubmit}>

@@ -2,6 +2,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { css } from "styled-components/macro"; //eslint-disable-line
+import Noimage from '../../images/no_image.webp'
 import './Admin.css'
 
 function NewsCard({newss}){
@@ -27,20 +28,30 @@ function NewsCard({newss}){
         <>
         {
             newss == undefined ? null :
-            <div className="admin-container">
+            <div className="admin-news-container">
             <div className="admin-news-card">
             <Post 
             className="group" 
             initial="rest" 
             whileHover="hover" 
             animate="rest">
+                {
+                newss.image == undefined ? 
                 <Image
                 transition={{ duration: 0.3 }}
                 variants={postBackgroundSizeAnimation}
-                $imageSrc={""}
+                $imageSrc={Noimage}
                 />
+                 :
+                <Image
+                transition={{ duration: 0.3 }}
+                variants={postBackgroundSizeAnimation}
+                $imageSrc={newss.image}
+                />
+                }
                 <Title>{newss.title}</Title>
                 <Description>{newss.description}</Description>
+                <p><i>{`Name: ${newss.admin.name}`}</i></p>
                 <p><i>{`Create at: ${newss.created_at}`}</i></p>
                 <p><i>{`Updated at: ${newss.updated_at}`}</i></p>
             </Post>
