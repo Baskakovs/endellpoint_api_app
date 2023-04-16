@@ -1,5 +1,5 @@
 class AddDateToNews < ActiveRecord::Migration[6.1]
   def change
-    add_column :news, :date, :date
+    add_column :news, :date, :string
   end
 end

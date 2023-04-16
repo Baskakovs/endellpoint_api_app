@@ -2,12 +2,12 @@ import { useState, useContext } from "react";
 import { AdminContext } from "App";
 function CreateNews(){
 
-    const { current_admin } = useContext(AdminContext)
-    console.log(current_admin)
+    const { currentAdmin } = useContext(AdminContext)
+
     const [form, setForm] = useState({
         title: "",
         description: "",
-        date: ""
+        date: "",
     })
 
     function handleChange(e){
@@ -19,13 +19,15 @@ function CreateNews(){
     }
     function handleSubmit(e){
         e.preventDefault()
+        addUserId()
+        const { news, ...formData } = form;
         fetch("/news", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-                },
-                body: JSON.stringify(form)
-            })
+            },
+            body: JSON.stringify(formData)
+        })
         .then(res => {
             if(res.ok){
                 res.json().then(data => {
@@ -36,6 +38,14 @@ function CreateNews(){
             }
         })
     }
+
+    function addUserId(){
+        setForm({
+            ...form,
+            admin_id: currentAdmin.id
+        })
+    }
+
     console.log(form)
     return(
         <>
@@ -68,6 +78,9 @@ function CreateNews(){
                             onChange={handleChange}
                             />
                         </div>
+                        <button type="submit" className="btn-purple mt-7">
+                            Create News
+                        </button>
                     </form>
                 </div>
             </div>

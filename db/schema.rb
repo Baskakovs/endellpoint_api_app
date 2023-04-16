@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2023_04_16_123239) do
     t.string "admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "date"
+    t.string "date"
   end
 
   create_table "reviews", force: :cascade do |t|

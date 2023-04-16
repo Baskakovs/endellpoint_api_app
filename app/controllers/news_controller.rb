@@ -13,7 +13,7 @@ class NewsController < ApplicationController
     private
 
     def news_params
-        params.permit(:title, :description, :date, :admin_id)
+        params.require(:news).permit(:title, :description, :date, :admin_id)
     end
 
     def invalid_news(invalid)

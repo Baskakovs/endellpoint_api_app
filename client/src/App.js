@@ -123,7 +123,7 @@ export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
 
-const [currentAdmin, setCurrentAdmin] = useState("")
+const [currentAdmin, setCurrentAdmin] = useState()
 
 useEffect(() => {
   const admin_id = JSON.parse(localStorage.getItem("admin_id"))
@@ -138,7 +138,6 @@ useEffect(() => {
     .then(res => {
       if (res.ok) {
         res.json().then(user => {
-          console.log(user)
           setCurrentAdmin(user)});
       }else{
         console.log("not logged in")
@@ -146,8 +145,8 @@ useEffect(() => {
     });
   }
 }, []);
+// console.log(currentAdmin, "currentAdmin")
 
-console.log(currentAdmin, "currentAdmin")
 //HANDLE LOGOUT
 //=============
 function logoutCurrentUser(){
