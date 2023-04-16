@@ -150,6 +150,8 @@ useEffect(() => {
 //HANDLE LOGOUT
 //=============
 function logoutCurrentUser(){
+  console.log("logout")
+  localStorage.removeItem("admin_id")
   setCurrentAdmin(null)
 }
 

@@ -13,6 +13,10 @@ import { ReactComponent as PlayIcon } from "feather-icons/dist/icons/play-circle
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/dot-pattern.svg";
+
+import GoogleMaps from "components/google/GoogleMaps.js";
+
+import { Loader } from "@googlemaps/js-api-loader"
 // import DesignIllustration from "../../images/design-illustration.svg";
 import Illustration from '../../images/Illustration.png';
 
@@ -76,6 +80,7 @@ export default ({
 
   return (
     <>
+
       <Header />
       <Container>
         <TwoColumn>
@@ -94,6 +99,7 @@ export default ({
           </LeftColumn>
           <RightColumn>
             <IllustrationContainer>
+              {/* <GoogleMaps /> */}
               <img
                 css={imageCss}
                 src={imageSrc}

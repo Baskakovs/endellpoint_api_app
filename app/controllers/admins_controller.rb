@@ -7,6 +7,7 @@ class AdminsController < ApplicationController
             admin = Admin.new(email: uadmin.email, name: params[:name], password: params[:password])
             if admin.save
                 session[:admin_id] = admin.id
+                uadmin.destroy
                 render json: admin, status: :created
             else
                 render json: { errors: admin.errors.full_messages }, status: :unprocessable_entity

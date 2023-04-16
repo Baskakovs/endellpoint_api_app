@@ -3,11 +3,20 @@ class NewsController < ApplicationController
         news = News.all
         render json: news
     end
+
     def create
         news = News.create!(news_params)
         render json: news
     rescue ActiveRecord::RecordInvalid => invalid
         invalid_news(invalid)
+    end
+
+    def restricted_index
+        news = []
+        3.times do |i|
+            news << News.all[i]
+        end
+        render json: news, each_serializer: NewsLandingSerializer
     end
 
     private

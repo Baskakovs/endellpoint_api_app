@@ -1,5 +1,8 @@
 import { useState, useContext } from "react";
 import { AdminContext } from "App";
+import { useNavigate } from "react-router-dom";
+import Login from "./Login";
+
 function CreateNews(){
 
     const { currentAdmin } = useContext(AdminContext)
@@ -46,9 +49,15 @@ function CreateNews(){
         })
     }
 
-    console.log(form)
     return(
         <>
+        {
+            !currentAdmin ? 
+
+            <Login /> 
+
+        :
+        
         <div className="admin-container">
             <div className="admin-news-">
                 <div className="admin-news-card">
@@ -85,6 +94,7 @@ function CreateNews(){
                 </div>
             </div>
         </div>
+        }
         </>
     )
 }

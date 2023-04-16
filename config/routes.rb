@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   post '/auth', to: 'sessions#is_logged_in?'
   resource :news
+  get '/news_landing', to: 'news#restricted_index'
 end
