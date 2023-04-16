@@ -14,4 +14,14 @@ class SessionsController < ApplicationController
         session.delete :user_id
         head :no_content
     end
+
+    def is_logged_in?
+        if session[:admin_id] == params[:admin_id]
+            admin = Admin.find_by(id: params[:admin_id])
+            render json: admin
+        else
+            render json: {error: "Not authorized"}, status: :unauthorized
+        end
+    end
+
 end

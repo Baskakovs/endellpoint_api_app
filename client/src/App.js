@@ -119,19 +119,51 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export const AdminContext = createContext()
 
 export default function App() {
+
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
 
 const [currentAdmin, setCurrentAdmin] = useState("")
+
+useEffect(() => {
+  const admin_id = JSON.parse(localStorage.getItem("admin_id"))
+  if (admin_id) {
+    fetch('/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({admin_id: admin_id})
+      })
+    .then(res => {
+      if (res.ok) {
+        res.json().then(user => {
+          console.log(user)
+          setCurrentAdmin(user)});
+      }else{
+        console.log("not logged in")
+      }
+    });
+  }
+}, []);
+
+console.log(currentAdmin, "currentAdmin")
 //HANDLE LOGOUT
 //=============
 function logoutCurrentUser(){
   setCurrentAdmin(null)
 }
+
+function handleLogin(admin){
+  // console.log(admin[0].session_id, "admin.session_id")
+  setCurrentAdmin(admin)
+  localStorage.setItem("admin_id", JSON.stringify(admin.id))
+}
+
   return (
     <>
       <Router>
-      <AdminContext.Provider value={{setCurrentAdmin, logoutCurrentUser}}>
+      <AdminContext.Provider value={{handleLogin, logoutCurrentUser, currentAdmin}}>
       <GlobalStyles/>
         <Routes>
           <Route path="/admin" element={<AdminPage />} />

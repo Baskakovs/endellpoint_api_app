@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 function SignupForm({setErrors}){
 
-    const {setCurrentAdmin} = useContext(AdminContext)
+    const {handleLogin} = useContext(AdminContext)
 
     //HANDLING FORM INPUTS
     //====================
@@ -43,7 +43,7 @@ function SignupForm({setErrors}){
             .then(res => {
                 if(res.ok){
                     res.json().then(user => {
-                        setCurrentAdmin(user)
+                        handleLogin(user)
                         navigate('/admin')
                     })
                 }else{

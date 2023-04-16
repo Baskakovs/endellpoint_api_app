@@ -1,10 +1,10 @@
 //Importing dependencies
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { AdminContext } from 'App';
 import { useNavigate } from 'react-router-dom';
 function LoginForm({setErrors}){
 
-    const {setCurrentAdmin} = useContext(AdminContext)
+    const {handleLogin} = useContext(AdminContext)
     
     //HANDLING FORM INPUTS
     //====================
@@ -36,7 +36,7 @@ function LoginForm({setErrors}){
         .then(res => {
             if(res.ok){
                 res.json().then(user => {
-                    setCurrentAdmin(user)
+                    handleLogin(user)
                     navigate('/admin')
                 })
 

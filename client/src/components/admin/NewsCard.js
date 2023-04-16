@@ -51,7 +51,8 @@ function NewsCard({newss}){
                 }
                 <Title>{newss.title}</Title>
                 <Description>{newss.description}</Description>
-                <p><i>{`Name: ${newss.admin.name}`}</i></p>
+                <p><i>{`By: ${newss.admin.name}`}</i></p>
+                <p><i>{`Date: ${newss.date}`}</i></p>
                 <p><i>{`Create at: ${newss.created_at}`}</i></p>
                 <p><i>{`Updated at: ${newss.updated_at}`}</i></p>
             </Post>

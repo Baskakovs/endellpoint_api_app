@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resource :admin, only: [:create]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  post '/auth', to: 'sessions#is_logged_in?'
   resource :news
 end
