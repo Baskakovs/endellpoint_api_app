@@ -56,7 +56,7 @@ export default () => {
     }
   };
 
-  //Recommended: Only 2 Items
+  // //Recommended: Only 2 Items
   const popularPosts = [
     {
       postImageSrc:
@@ -108,43 +108,56 @@ export default () => {
     }
   ];
 
-  // const recentPosts = [
-  //   {
-  //     postImageSrc:
-  //       "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-  //     title: "Getting the most out of your vacation",
-  //     authorName: "Aaron Patterson",
-  //     url: "https://reddit.com"
-  //   },
-  //   {
-  //     postImageSrc:
-  //       "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-  //     title: "Choosing the perfect Safaris in Africa",
-  //     authorName: "Sam Phipphen",
-  //     url: "https://reddit.com"
-  //   },
-  //   {
-  //     postImageSrc:
-  //       "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-  //     title: "Hiking during the monsoon in Asia",
-  //     authorName: "Tony Hawk",
-  //     url: "https://timerse.com"
-  //   },
-  //   {
-  //     postImageSrc:
-  //       "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
-  //     title: "Must carry items while travelling to Thailand",
-  //     authorName: "Himali Turn",
-  //     url: "https://timerse.com"
-  //   },
-  //   {
-  //     postImageSrc:
-  //       "https://images.unsplash.com/photo-1546971587-02375cbbdade?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=641&q=80",
-  //     title: "An extremely funny trip to the Swiss Alps",
-  //     authorName: "Naomi Watts",
-  //     url: "https://timerse.com"
-  //   },
-  // ]
+  const recentPosts = [
+    {
+      postImageSrc:
+        "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
+      title: "Getting the most out of your vacation",
+      authorName: "Aaron Patterson",
+      url: "https://reddit.com"
+    },
+    {
+      postImageSrc:
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
+      title: "Choosing the perfect Safaris in Africa",
+      authorName: "Sam Phipphen",
+      url: "https://reddit.com"
+    },
+    {
+      postImageSrc:
+        "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
+      title: "Hiking during the monsoon in Asia",
+      authorName: "Tony Hawk",
+      url: "https://timerse.com"
+    },
+    {
+      postImageSrc:
+        "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80",
+      title: "Must carry items while travelling to Thailand",
+      authorName: "Himali Turn",
+      url: "https://timerse.com"
+    },
+    {
+      postImageSrc:
+        "https://images.unsplash.com/photo-1546971587-02375cbbdade?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=641&q=80",
+      title: "An extremely funny trip to the Swiss Alps",
+      authorName: "Naomi Watts",
+      url: "https://timerse.com"
+    },
+  ]
+
+  fetch('/news', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+      }
+    })
+    .then(res => {
+        if(res.ok){
+
+        }
+      })
+
 
   return (
     <Container>

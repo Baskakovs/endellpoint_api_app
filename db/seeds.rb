@@ -13,7 +13,7 @@ News.destroy_all
         title: Faker::Book.title,
         description: Faker::Lorem.paragraph(sentence_count: 2),
         # image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['news']),
-        # admin_id: Admin.first
+        admin_id: Admin.first
     )
 end
 print "Successfully seeded the tables!"

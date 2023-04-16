@@ -133,17 +133,15 @@ function logoutCurrentUser(){
     <>
       <Router>
       <AdminContext.Provider value={{setCurrentAdmin, logoutCurrentUser}}>
+      <GlobalStyles/>
         <Routes>
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/login" element={<Login />} />
           <Route exact path="/admin/news" element={<NewsAdmin />} />
-        </Routes>
-      </AdminContext.Provider>
-      <GlobalStyles/>
-        <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/contact-us" element={<Contact />}/>
         </Routes>
+        </AdminContext.Provider>
       </Router>
     </>
   );
