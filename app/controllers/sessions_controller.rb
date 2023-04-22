@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorized, only: [:create, :destroy]
+    skip_before_action :authorized, only: [:create, :destroy, :is_logged_in?]
     def create
         admin = Admin.find_by(email: params[:email])
-        if admin &.authenticate(params[:password]) #Bcrypt checks if the password provided matches the password stored in the database for the user.
-            session[:admin__id] = admin.id
+        if admin &.authenticate(params[:password])
+            session[:admin_id] = admin.id
             render json: admin, status: :created
         else
-            render json: {error: "Invalid username or password"}, status: 401
+            render json: {error: "Invalid username or password"}, status: :unauthorized
         end
     end
 
@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
     def is_logged_in?
         if session[:admin_id] == params[:admin_id]
             admin = Admin.find_by(id: params[:admin_id])
-            render json: admin
+            render json: admin, status: :ok
+            session[:admin_id] = params[:admin_id]
         else
             render json: {error: "Not authorized"}, status: :unauthorized
         end

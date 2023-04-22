@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :locations
   resources :news
   resources :u_admins
   resources :sessions
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
   post '/auth', to: 'sessions#is_logged_in?'
   get '/news_landing', to: 'news#restricted_index'
   resource :news
+  resource :locations
 end

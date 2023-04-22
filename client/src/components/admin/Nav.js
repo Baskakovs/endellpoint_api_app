@@ -38,7 +38,7 @@ function Nav({handleLogout}){
                     <li className="nav-li" key={1}>
                         <button className={"btn-purple"} onClick={handleLogout}>Logout</button>
                     </li>
-                    <NavLink to="/my_books">
+                    <NavLink to="/admin/maps">
                         <li className="nav-li" key={2}>
                             <button className={"btn-nav"}>Google Maps</button>
                         </li>

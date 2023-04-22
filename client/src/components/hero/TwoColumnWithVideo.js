@@ -23,7 +23,13 @@ import Illustration from '../../images/Illustration.png';
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
 const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center lg:text-left`;
-const RightColumn = tw.div`relative mt-12 lg:mt-0 flex flex-col justify-center`;
+const RightColumn = tw.div`
+  relative
+  mt-12 lg:mt-0
+  flex flex-col justify-center
+  min-h-full lg:min-h-0
+  flex-1
+`;
 
 const Heading = tw.h1`font-black text-gray-800 text-3xl md:text-5xl leading-snug max-w-3xl`;
 const Paragraph = tw.p`my-5 lg:my-8 text-sm lg:text-base font-medium text-gray-600 max-w-lg mx-auto lg:mx-0`;
@@ -40,8 +46,12 @@ const WatchVideoButton = styled.button`
   }
 `;
 
-const IllustrationContainer = tw.div`flex justify-center md:justify-end items-center relative max-w-3xl lg:max-w-none`;
-
+const GoogleMapsContainer = tw.div`
+  h-full
+  mt-6
+  lg:mt-0
+  w-full
+`;
 // Random Decorator Blobs (shapes that you see in background)
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3  -z-10`}
@@ -98,15 +108,10 @@ export default ({
             </Actions> */}
           </LeftColumn>
           <RightColumn>
-            <IllustrationContainer>
-              {/* <GoogleMaps /> */}
-              <img
-                css={imageCss}
-                src={imageSrc}
-                alt="Hero"
-              />
-              {imageDecoratorBlob && <DecoratorBlob2 />}
-            </IllustrationContainer>
+          
+          <GoogleMapsContainer>
+            <GoogleMaps />
+          </GoogleMapsContainer>
           </RightColumn>
         </TwoColumn>
         <StyledModal

@@ -11,7 +11,8 @@ import AdminPage from "components/admin/AdminPage";
 import Login from "components/admin/Login";
 import NewsAdmin from "components/admin/NewsAdmin";
 import CreateNews from "components/admin/CreateNews";
-
+import MapsAdmin from "components/admin/MapsAdmin";
+import CreateLocation from "components/admin/CreateLocation";
 /*x
  * This is the entry point component of this project. You can change the below exported default App component to any of
  * the prebuilt landing page components by uncommenting their import and export lines respectively.
@@ -145,12 +146,10 @@ useEffect(() => {
     });
   }
 }, []);
-// console.log(currentAdmin, "currentAdmin")
 
 //HANDLE LOGOUT
 //=============
 function logoutCurrentUser(){
-  console.log("logout")
   localStorage.removeItem("admin_id")
   setCurrentAdmin(null)
 }
@@ -170,6 +169,8 @@ function handleLogin(admin){
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/login" element={<Login />} />
           <Route exact path="/admin/news" element={<NewsAdmin />} />
+          <Route exact path="/admin/maps" element={<MapsAdmin />} />
+          <Route exact path="/admin/create_location" element={<CreateLocation />} />
           <Route exact path="/admin/news/create" element={<CreateNews />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/contact-us" element={<Contact />}/>
