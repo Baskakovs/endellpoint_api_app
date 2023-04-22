@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+    skip_before_action :authorized, only: [:restricted_index]
     def index
         news = News.all
         render json: news
@@ -12,12 +13,9 @@ class NewsController < ApplicationController
     end
 
     def restricted_index
-        news = []
-        3.times do |i|
-            news << News.all[i]
-        end
+        news = News.includes(:admin).limit(5)
         render json: news, each_serializer: NewsLandingSerializer
-    end
+      end
 
     private
 

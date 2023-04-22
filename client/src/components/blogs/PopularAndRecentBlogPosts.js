@@ -6,12 +6,13 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading } from "components/misc/Headings.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 
-const Row = tw.div`flex flex-col lg:flex-row -mb-10`;
+const Row = tw.div`flex flex-col items-center lg:flex-row -mb-10 lg:mb-20`;
 const Heading = tw(SectionHeading)`text-left lg:text-4xl xl:text-5xl`;
 
 const PopularPostsContainer = tw.div`lg:w-full`;
 const PostsContainer = tw.div`mt-12 flex flex-wrap justify-center sm:justify-start`;
-const Post = tw(motion.a)`block sm:w-64 cursor-pointer mb-16 last:mb-0 sm:mb-0 sm:mr-8 lg:mr-8 xl:mr-16`;
+const Post = tw(motion.a)`block sm:w-64 cursor-pointer mb-16 last:mb-0 sm:mb-0 sm:mr-8 lg:mr-8 xl:mr-16 border border-gray-300 border-dashed border-2 p-4 rounded`;
+
 const Image = styled(motion.div)(props => [
   `background-image: url("${props.$imageSrc}");`,
   tw`h-64 bg-cover bg-center rounded`
@@ -31,7 +32,7 @@ const RecentPostsContainer = styled.div`
     ${tw`flex flex-wrap lg:flex-col`}
   }
   ${Post} {
-    ${tw`flex justify-between mb-10 max-w-none w-full sm:w-1/2 lg:w-auto sm:odd:pr-12 lg:odd:pr-0 mr-0`}
+    ${tw`flex justify-between mb-10 max-w-none w-full sm:w-1/2 lg:w-auto sm:odd:pr-12 lg:odd:pr-0 mr-0 border border-gray-300`}
   }
   ${Title} {
     ${tw`text-base xl:text-lg mt-0 mr-4 lg:max-w-xs`}
@@ -43,7 +44,6 @@ const RecentPostsContainer = styled.div`
     ${tw`h-20 w-20 flex-shrink-0`}
   }
 `;
-const PostTextContainer = tw.div``
 
 export default ({news}) => {
   // This setting is for animating the post background image on hover
@@ -62,7 +62,7 @@ export default ({news}) => {
       <ContentWithPaddingXl>
         <Row>
           <PopularPostsContainer>
-            <Heading>Popular Posts</Heading>
+            <Heading>Recent News</Heading>
             <PostsContainer>
               {! Array.isArray(news) ? null :  
                 news.map((newss, index) => (
@@ -74,20 +74,6 @@ export default ({news}) => {
               ))}
             </PostsContainer>
           </PopularPostsContainer>
-          {/* <RecentPostsContainer>
-            <Heading>Recent Posts</Heading>
-            <PostsContainer>
-              {recentPosts.map((post, index) => (
-              <Post key={index} href={post.url} className="group">
-                <PostTextContainer>
-                  <Title>{post.title}</Title>
-                  <AuthorName>{post.authorName}</AuthorName>
-                </PostTextContainer>
-                <Image $imageSrc={post.postImageSrc} />
-              </Post>
-              ))}
-            </PostsContainer>
-          </RecentPostsContainer> */}
         </Row>
       </ContentWithPaddingXl>
     </Container>
