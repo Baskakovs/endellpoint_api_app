@@ -1,4 +1,4 @@
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from '@react-google-maps/api';
 import React from 'react';
 import { useState, useEffect } from 'react';
 
@@ -41,6 +41,7 @@ function GoogleMaps() {
   })
 
   const [map, setMap] = React.useState(null)
+  const [selectedMarker, setSelectedMarker] = React.useState(null)
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
@@ -56,15 +57,33 @@ function GoogleMaps() {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={9.5}
+      zoom={11}
       onLoad={onLoad}
       onUnmount={onUnmount}
+      options={{
+        disableDefaultUI: true,
+        zoomControl: true
+      }}
     >
       {Array.isArray(markers) && markers.map((marker, index) => { 
-  return !marker.show ? null : (
-    <Marker key={index} position={{ lat: marker.latitude, lng: marker.longitude }} />
-  )
-})}
+        return (
+          <Marker
+            key={index}
+            position={{ lat: marker.latitude, lng: marker.longitude }}
+            onClick={() => setSelectedMarker(marker)}
+          >
+            {selectedMarker === marker && (
+              <InfoWindow onCloseClick={() => setSelectedMarker(null)}>
+                <div>
+                  <h3>{marker.address_name}</h3>
+                  <p>{`${marker.building_number} ${marker.street}`}</p>
+                  <p>{marker.postcode}</p>
+                </div>
+              </InfoWindow>
+            )}
+          </Marker>
+        );
+      })}
 
       <></>
     </GoogleMap>

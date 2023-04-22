@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-    skip_before_action :authorized, only: [:index, :show]
+    skip_before_action :authorized, only: [:index]
     def index
         locations = Location.all
         render json: locations
@@ -16,6 +16,20 @@ class LocationsController < ApplicationController
 
     def show
         location = Location.find(params[:id])
+        render json: location
+    end
+
+    def update
+        location = Location.find(params[:id])
+        location.update!(location_params)
+        render json: location, serializer: LocationSerializer
+    rescue ActiveRecord::RecordInvalid => invalid
+        invalid_location(invalid)
+    end
+
+    def destroy
+        location = Location.find(params[:id])
+        location.destroy
         render json: location
     end
 

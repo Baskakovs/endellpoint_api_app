@@ -2,7 +2,7 @@ import React from "react";
 import {useState, useEffect} from 'react'
 import { createContext } from "react";
 import GlobalStyles from 'styles/GlobalStyles';
-import { css } from "styled-components/macro"; //eslint-disable-line
+
 
 //My imports
 import LandingPage from "LandingPage";
@@ -13,6 +13,8 @@ import NewsAdmin from "components/admin/NewsAdmin";
 import CreateNews from "components/admin/CreateNews";
 import MapsAdmin from "components/admin/MapsAdmin";
 import CreateLocation from "components/admin/CreateLocation";
+import EditLocation from "components/admin/EditLocation";
+import EditNews from "components/admin/EditNews";
 /*x
  * This is the entry point component of this project. You can change the below exported default App component to any of
  * the prebuilt landing page components by uncommenting their import and export lines respectively.
@@ -171,6 +173,8 @@ function handleLogin(admin){
           <Route exact path="/admin/news" element={<NewsAdmin />} />
           <Route exact path="/admin/maps" element={<MapsAdmin />} />
           <Route exact path="/admin/create_location" element={<CreateLocation />} />
+          <Route exact path="/admin/edit_location/:id" element={<EditLocation />} />
+          <Route exact path="/admin/edit_news/:id" element={<EditNews />} />
           <Route exact path="/admin/news/create" element={<CreateNews />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/contact-us" element={<Contact />}/>
@@ -180,22 +184,3 @@ function handleLogin(admin){
     </>
   );
 }
-
-// export default EventLandingPage;
-// export default HotelTravelLandingPage;
-// export default AgencyLandingPage;
-// export default SaaSProductLandingPage;
-// export default RestaurantLandingPage;
-// export default ServiceLandingPage;
-// export default HostingCloudLandingPage;
-
-// export default LoginPage;
-// export default SignupPage;
-// export default PricingPage;
-// export default AboutUsPage;
-// export default ContactUsPage;
-// export default BlogIndexPage;
-// export default TermsOfServicePage;
-// export default PrivacyPolicyPage;
-
-// export default MainLandingPage;

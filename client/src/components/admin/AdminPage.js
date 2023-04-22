@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Switch, Route,  } from "react-router-dom";
 import './Admin.css'
 
 import Nav from './Nav'

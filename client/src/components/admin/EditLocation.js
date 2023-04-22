@@ -1,17 +1,33 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AdminContext } from "App";
+import { useNavigate, useParams } from "react-router-dom";
 import Login from "./Login";
-function CreateLocation(){
+function EditLocation(){
     const { currentAdmin } = useContext(AdminContext)
+    const params = useParams()
+    const navigate = useNavigate()
 
-    const [form, setForm] = useState({
-        address_name: "",
-        building_number: "",
-        street: "",
-        city: "",
-        postcode: "",
-        show: false
-    })
+    const [form, setForm] = useState("")
+
+    useEffect(() => {
+        fetch(`/locations/${params.id}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+                }
+                })
+        .then(res => {
+            if(res.ok){
+                res.json().then(data => {
+                    setForm(data)
+                })
+            }else{
+                console.log("error")
+            }
+        })
+    }, [])
+
 
     function handleChange(e){
         const {name, value} = e.target
@@ -27,14 +43,27 @@ function CreateLocation(){
         })
     }
 
-    console.log(form)
+    function handleDelete(){
+        fetch(`/locations/${params.id}`, {
+            method: "DELETE",
+        })
+        .then(res => {
+            if(res.ok){
+                res.json().then(data => {
+                    navigate("/admin/maps")
+                })
+            }else{
+                // console.log("error")
+            }
+        })
+    }
 
     function handleSubmit(e){
         e.preventDefault()
         addUserId()
         const {markers, ...formData} = form
         fetch("/locations", {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -43,10 +72,10 @@ function CreateLocation(){
         .then(res => {
             if(res.ok){
                 res.json().then(data => {
-                    
+                    navigate("/admin/maps")
                 })
             }else{
-                console.log("error")
+                // console.log("error")
             }
         })
     }
@@ -57,10 +86,9 @@ function CreateLocation(){
             admin_id: currentAdmin.id
         })
     }
-
     return(
         <>
-        {
+                {
             !currentAdmin ? 
 
             <Login /> 
@@ -70,12 +98,12 @@ function CreateLocation(){
         <div className="admin-container">
             <div className="admin-news-">
                 <div className="admin-news-card">
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form text-center" onSubmit={handleSubmit}>
                         <div className="container">
                             <input 
                             type="text" 
                             name="address_name" 
-                            value={form.title} 
+                            value={form.address_name} 
                             className="mt-7 p-3"
                             placeholder="Address Name (Optional)"
                             onChange={handleChange}
@@ -116,6 +144,12 @@ function CreateLocation(){
                             onChange={handleChangeShow}
                             className="mt-7"
                             name="show_on_map"
+                            checked={
+                                form.show ?
+                                true
+                                :
+                                null
+                            }
                             />
                             <label
                             for="show_on_map"
@@ -123,8 +157,16 @@ function CreateLocation(){
                                 Show on Map?
                             </label>
                         </div>
-                        <button type="submit" className="btn-purple mt-7">
-                            Save Address
+                        <button 
+                        type="submit" 
+                        className="btn-purple mt-7">
+                            Update Address
+                        </button>
+                        <button 
+                        className="btn-split mt-7 text-center"
+                        onClick={handleDelete}
+                        >
+                            Delete Address
                         </button>
                     </form>
                 </div>
@@ -134,4 +176,4 @@ function CreateLocation(){
         </>
     )
 }
-export default CreateLocation
+export default EditLocation

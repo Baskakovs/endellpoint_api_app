@@ -1,19 +1,35 @@
 import Nav from './Nav'
-import NewsCard from './NewsCard'
-import {useState} from 'react'
+import LocationCard from './LocationCard'
+import {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 function MapsAdmin(){
     const [locations, setLocation] = useState([])
+    useEffect(() => {
+        fetch("/locations", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => {
+            if(res.ok){
+                res.json().then(data => {
+                    setLocation(data)
+                })
+            }
+        })
+    }, [])
+    console.log(locations)
     return (
         <>
             <Nav />
             <h1 className="title">Here is a list of all your locations</h1>
         <div className="admin-container">
             {
-                Array.isArray(locations) && locations.map((location, index) => {
+                Array.isArray(locations) && locations.map((location) => {
                     return (
                         !location ? null :
-                        <NewsCard key={index} location={location} />
+                        <LocationCard key={location.id} location={location} />
                     )
                 })
             }
