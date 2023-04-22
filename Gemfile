@@ -51,3 +51,8 @@ end
 gem "active_model_serializers", "~> 0.10.12"
 
 gem 'faker', '~> 3.2'
+
+gem 'geocoder'
+
+gem 'dotenv-rails', groups: [:development, :test]
+

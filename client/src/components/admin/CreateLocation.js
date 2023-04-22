@@ -82,8 +82,8 @@ function CreateLocation(){
                             />
                             <input 
                             ype="text" 
-                            name="buidling_number" 
-                            value={form.title} 
+                            name="building_number" 
+                            value={form.building_number} 
                             className="mt-7 p-3"
                             placeholder="Building Number"
                             onChange={handleChange}
@@ -91,7 +91,7 @@ function CreateLocation(){
                             <input 
                             ype="text" 
                             name="street" 
-                            value={form.title} 
+                            value={form.street} 
                             className="mt-7 p-3"
                             placeholder="Street"
                             onChange={handleChange}
@@ -99,14 +99,14 @@ function CreateLocation(){
                             <input 
                             ype="text" 
                             name="city" 
-                            value={form.title} 
+                            value={form.city} 
                             className="mt-7 p-3"
                             placeholder="City"
                             onChange={handleChange}
                             />
                             <input type="text"
                             name="postcode"
-                            value={form.date}
+                            value={form.postcode}
                             className="mt-7"
                             onChange={handleChange}
                             placeholder="Postcode"

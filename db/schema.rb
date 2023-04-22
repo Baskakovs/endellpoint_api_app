@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2023_04_22_113538) do
     t.string "street"
     t.string "city"
     t.string "postcode"
-    t.integer "user_id"
+    t.integer "admin_id"
     t.boolean "show"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

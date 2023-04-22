@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { AdminContext } from "App";
-import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 
 function CreateNews(){

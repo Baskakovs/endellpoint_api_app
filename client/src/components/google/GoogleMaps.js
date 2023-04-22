@@ -1,6 +1,6 @@
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const containerStyle = {
   width: '100%',
@@ -12,8 +12,29 @@ const center = {
   lng: -0.127816
 };
 
+
 function GoogleMaps() {
   const [markers, setMarkers] = useState([])
+  useEffect(() => {
+    fetch("/locations", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+      if(res.ok){
+        res.json().then(data => {
+          setMarkers(data)
+        })
+      }
+    })
+
+  }, [])
+
+  console.log(markers, "markers")
+
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyA5D-JAB0rZ2WVfMRgPS1gnsG7g9ciVH9g"
@@ -39,11 +60,12 @@ function GoogleMaps() {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {
-        Array.isArray(markers) && markers.map((marker, index) =>{
-          return <Marker key={index} position={marker} />
-        })
-      }
+      {Array.isArray(markers) && markers.map((marker, index) => { 
+  return !marker.show ? null : (
+    <Marker key={index} position={{ lat: marker.latitude, lng: marker.longitude }} />
+  )
+})}
+
       <></>
     </GoogleMap>
   ) : <></>

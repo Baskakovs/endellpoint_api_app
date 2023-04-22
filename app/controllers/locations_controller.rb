@@ -6,8 +6,10 @@ class LocationsController < ApplicationController
     end
 
     def create
-        location = Location.create!(location_params)
-        render json: location
+        location = Location.new(location_params)
+        location.geocode
+        location.save!
+        render json: location, serializer: LocationSerializer
     rescue ActiveRecord::RecordInvalid => invalid
         invalid_location(invalid)
     end
@@ -20,8 +22,9 @@ class LocationsController < ApplicationController
     private
 
     def location_params
-     params.require(:location).permit(:address_name, :building_number, :street, :city, :postcode)
-    end
+    params.require(:location).permit(:address_name, :building_number, :street, :city, :postcode, :show).merge(admin_id: session[:admin_id])
+      end
+      
 
     def invalid_location(invalid)
         render json: {error: invalid.record.errors.full_messages}, status: :unprocessable_entity

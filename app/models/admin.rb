@@ -1,5 +1,6 @@
 class Admin < ApplicationRecord
     has_many :news
+    has_many :locations
     #Associations
     has_secure_password
 

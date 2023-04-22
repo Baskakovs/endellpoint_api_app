@@ -8,7 +8,7 @@ class CreateLocations < ActiveRecord::Migration[6.1]
       t.string :street
       t.string :city
       t.string :postcode
-      t.integer :user_id
+      t.integer :admin_id
       t.boolean :show
 
       t.timestamps
