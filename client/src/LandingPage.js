@@ -5,6 +5,7 @@ import Features from "components/features/ThreeColWithSideImageWithPrimaryBackgr
 import Faq from "components/faqs/SingleCol";
 import Blog from "components/blogs/PopularAndRecentBlogPosts";
 import Footer from "components/footers/MiniCenteredFooter"
+
 function LandingPage(){
 
     const [news, setNews] = useState([])

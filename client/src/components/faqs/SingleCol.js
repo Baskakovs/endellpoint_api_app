@@ -83,7 +83,7 @@ export default ({
   };
 
   return (
-    <Container>
+    <Container className="FAQSContainer">
       <ContentWithPaddingXl>
         <Column>
           <HeaderContent>

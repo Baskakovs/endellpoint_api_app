@@ -48,8 +48,12 @@ export default ({news}) => {
     }
   };
 
+  function reverseDate(date){
+    return date.split("-").reverse().join("-");
+  }
+
   return (
-    <Container className="FAQSContainer">
+    <Container className="">
       <ContentWithPaddingXl>
         <Row>
           <PopularPostsContainer>
@@ -58,7 +62,7 @@ export default ({news}) => {
               {! Array.isArray(news) ? null :  
                 news.map((newss, index) => (
                   <Post key={index} className="group">
-                    <Date>{newss.date}</Date>
+                    <Date>{reverseDate(newss.date)}</Date>
                     <Title>{newss.title}</Title>
                     <Description>
                       {newss.description}
