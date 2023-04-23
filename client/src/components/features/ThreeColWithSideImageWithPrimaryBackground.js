@@ -15,7 +15,7 @@ import { faTruck } from "@fortawesome/free-solid-svg-icons";
 const Container = tw.div`relative bg-yellow-400 -mx-8 px-8 text-gray-700`;
 
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-12`}
 `;
 const Subheading = tw(SubheadingBase)`mb-4 text-gray-700`;
 const Heading = tw(SectionHeading)`w-full text-gray-800`;
@@ -28,7 +28,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+  ${tw`flex flex-col items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-4`}
   .imageContainer {
     ${tw`bg-gray-100 text-center p-6 flex-shrink-0`}
     border-radius: 50%;

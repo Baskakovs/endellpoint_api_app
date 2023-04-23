@@ -23,8 +23,6 @@ function NewsAdmin(){
             res.json().then(data => {
                 setNews(data)
             })
-        }else{
-            console.log("error")
         }
     })
 }, [])
@@ -33,7 +31,12 @@ function NewsAdmin(){
     return(
         <>
         <Nav />
-        <h1 className="title">Here is a list of all your news</h1>
+        <h1 className="title">{
+            news.length > 0 ?
+            "Here are all your news"
+            :
+            "😔You have no news yet...😔"
+        }</h1>
         <div className="admin-container">
             {
                 Array.isArray(news) && news.map((newss, index) => {

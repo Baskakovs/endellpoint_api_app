@@ -18,6 +18,13 @@ function NewsCard({newss}){
     }
     };
 
+    function convertDate(isoString){
+        const date = new Date(isoString);
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+const formattedDate = date.toLocaleDateString('en-US', options);
+    return(formattedDate);
+    }
+
     return (
         <>
         {
@@ -31,11 +38,11 @@ function NewsCard({newss}){
             whileHover="hover" 
             animate="rest">
                 <Title>{newss.title}</Title>
-                <Description>{newss.description}</Description>
-                <p><i>{`By: ${newss.admin.name}`}</i></p>
-                <p><i>{`Date: ${newss.date}`}</i></p>
-                <p><i>{`Create at: ${newss.created_at}`}</i></p>
-                <p><i>{`Updated at: ${newss.updated_at}`}</i></p>
+                <p>{newss.description}</p>
+                <Description><i>{`By: ${newss.admin.name}`}</i></Description>
+                <Description><i>{`Date: ${newss.date}`}</i></Description>
+                <Description><i>{`Create at: ${convertDate(newss.created_at)}`}</i></Description>
+                <Description><i>{`Updated at: ${convertDate(newss.updated_at)}`}</i></Description>
             </Post>
             </Link>
             </div>

@@ -1,9 +1,11 @@
 import { useState, useContext } from "react";
 import { AdminContext } from "App";
 import Login from "./Login";
+import CloseButton from "./CloseButton";
+import {useNavigate} from "react-router-dom";
 
 function CreateNews(){
-
+    const navigate = useNavigate()
     const { currentAdmin } = useContext(AdminContext)
 
     const [form, setForm] = useState({
@@ -33,10 +35,8 @@ function CreateNews(){
         .then(res => {
             if(res.ok){
                 res.json().then(data => {
-                    console.log(data)
+                    navigate("/admin/news")
                 })
-            }else{
-                console.log("error")
             }
         })
     }
@@ -56,7 +56,8 @@ function CreateNews(){
             <Login /> 
 
         :
-        
+        <>
+        <CloseButton/>
         <div className="admin-container">
             <div className="admin-news-">
                 <div className="admin-news-card">
@@ -93,6 +94,7 @@ function CreateNews(){
                 </div>
             </div>
         </div>
+        </>
         }
         </>
     )

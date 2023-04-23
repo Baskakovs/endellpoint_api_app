@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { AdminContext } from "App";
 import { useNavigate, useParams } from "react-router-dom";
 import Login from "./Login";
+import CloseButton from "./CloseButton";
 function EditLocation(){
     const { currentAdmin } = useContext(AdminContext)
     const params = useParams()
@@ -74,8 +75,6 @@ function EditLocation(){
                 res.json().then(data => {
                     navigate("/admin/maps")
                 })
-            }else{
-                // console.log("error")
             }
         })
     }
@@ -94,7 +93,8 @@ function EditLocation(){
             <Login /> 
 
         :
-        
+        <>
+        <CloseButton />
         <div className="admin-container">
             <div className="admin-news-">
                 <div className="admin-news-card">
@@ -172,6 +172,7 @@ function EditLocation(){
                 </div>
             </div>
         </div>
+        </>
         }
         </>
     )

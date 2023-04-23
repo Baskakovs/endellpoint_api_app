@@ -50,7 +50,7 @@ export default () => {
           </LinksContainer>
           <SocialLinksContainer>
           <SocialLink>
-            <a href="https://www.facebook.com">
+            <a href="https://www.facebook.com/endellpoint">
               <FacebookIcon />
             </a>
           </SocialLink>

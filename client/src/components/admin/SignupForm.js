@@ -16,6 +16,8 @@ function SignupForm({setErrors}){
         confirmPassword: ""
     })
 
+    console.log(signUpForm)
+
     function handleChange(e){
         e.preventDefault()
         let name = e.target.name
@@ -35,13 +37,16 @@ function SignupForm({setErrors}){
         e.preventDefault()
         validateInputs()
         if(validity){
-            fetch('http://localhost:4000/admin',{
+            console.log("1")
+            fetch('/admin',{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(signUpForm)
             })
             .then(res => {
+                console.log("2")
                 if(res.ok){
+                    console.log("2")
                     res.json().then(user => {
                         handleLogin(user)
                         navigate('/admin')
@@ -50,6 +55,8 @@ function SignupForm({setErrors}){
                     res.json().then(e =>setErrors(e.errors))
                 }
             })
+        }else{
+            setErrors(["Passwords do not match"])
         }
     }
 

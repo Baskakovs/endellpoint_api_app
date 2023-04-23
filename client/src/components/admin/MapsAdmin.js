@@ -23,7 +23,14 @@ function MapsAdmin(){
     return (
         <>
             <Nav />
-            <h1 className="title">Here is a list of all your locations</h1>
+            <h1 className="title">
+                {
+                    locations.length > 0 ?
+                    "Here are all your locations"
+                    :
+                    "😔You have no locations yet...😔"
+                }
+            </h1>
         <div className="admin-container">
             {
                 Array.isArray(locations) && locations.map((location) => {

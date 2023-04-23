@@ -23,8 +23,6 @@ function LandingPage(){
                 res.json().then(data => {
                     setNews(data)
                 })
-            }else{
-                console.log("error")
             }
         })
     }, [])
@@ -36,7 +34,12 @@ function LandingPage(){
         <Hero />
         <Features />
         <Faq/>
-        <Blog news={news}/>
+        {
+            news.length > 0 ? 
+            <Blog news={news}/>
+            :
+            null
+        }
         <Footer/>
         </>
     );

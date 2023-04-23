@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AdminContext } from "App";
 import Login from "./Login";
+import CloseButton from "./CloseButton";
 
 function EditNews(){
 
@@ -83,7 +84,8 @@ function EditNews(){
             <Login /> 
 
         :
-        
+        <>
+        <CloseButton />
         <div className="admin-container">
             <div className="admin-news-">
                 <div className="admin-news-card">
@@ -127,6 +129,7 @@ function EditNews(){
                 </div>
             </div>
         </div>
+        </>
         }
         </>
     )

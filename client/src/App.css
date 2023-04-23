@@ -5,18 +5,14 @@
 .mx-5{
     margin: 5%;
 }
-h1{
-    color: red;
-}
+
 .mobile-store-container{
-    margin: 0;
-    width: 100%;
-    height: 100%;
+    margin-top: 0;
 }
 .mobile-store-container .ios {
     background-image: url('./images/app-store.svg');
     width: 200px;
-    height: 200px;
+    height: 50px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -26,7 +22,7 @@ h1{
   .mobile-store-container .android {
     background-image: url('./images/google-play.png');
     width: 240px;
-    height: 200px;
+    height: 70px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -45,5 +41,5 @@ h1{
   float: right;
 } 
   .FAQSContainer {
-    margin-bottom: -100px;
+    margin-bottom: -70px;
   }

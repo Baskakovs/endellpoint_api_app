@@ -1,9 +1,11 @@
 import { useState, useContext } from "react";
 import { AdminContext } from "App";
 import Login from "./Login";
+import CloseButton from "./CloseButton";
+import { useNavigate } from "react-router-dom";
 function CreateLocation(){
     const { currentAdmin } = useContext(AdminContext)
-
+    const navigate = useNavigate()
     const [form, setForm] = useState({
         address_name: "",
         building_number: "",
@@ -43,7 +45,7 @@ function CreateLocation(){
         .then(res => {
             if(res.ok){
                 res.json().then(data => {
-                    
+                    navigate("/admin/maps")
                 })
             }else{
                 console.log("error")
@@ -66,7 +68,8 @@ function CreateLocation(){
             <Login /> 
 
         :
-        
+        <>
+        <CloseButton />
         <div className="admin-container">
             <div className="admin-news-">
                 <div className="admin-news-card">
@@ -130,6 +133,7 @@ function CreateLocation(){
                 </div>
             </div>
         </div>
+        </>
         }
         </>
     )

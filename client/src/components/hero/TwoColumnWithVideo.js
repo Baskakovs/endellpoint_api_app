@@ -98,10 +98,10 @@ export default ({
             <Paragraph>{description}</Paragraph>
             <Actions>
               <div className="mobile-store-container">
-                <button className="ios"/>
+                <button className="ios button"/>
               </div>
               <div className="mobile-store-container">
-                <button className="android"/>
+                <button className="android button"/>
               </div>
               </Actions>
           </LeftColumn>
