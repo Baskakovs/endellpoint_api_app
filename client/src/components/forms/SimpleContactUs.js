@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import {ReactComponent as SvgDotPatternIcon} from "../../images/dot-pattern.svg"
+import { useNavigate } from "react-router-dom";
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -16,7 +16,7 @@ const FormContainer = styled.div`
     ${tw`text-3xl sm:text-4xl font-bold`}
   }
   input,textarea {
-    ${tw`w-full bg-transparent text-gray-700 text-base font-medium tracking-wide border-b-2 py-2 text-gray-700 hocus:border-gray-600 focus:outline-none transition duration-200`};
+    ${tw`w-full bg-transparent text-gray-700 text-base font-medium tracking-wide border-b-2 text-gray-700 hocus:border-white p-2 focus:outline-none transition duration-200`};
 
     ::placeholder {
       ${tw`text-gray-100`}
@@ -34,10 +34,15 @@ const SubmitButton = tw.button`w-full sm:w-32 mt-6 py-3 bg-gray-100 text-gray-70
 
 
 export default () => {
+  const navigate = useNavigate();
+  function handleClose(){
+    navigate("/");
+  }
   return (
     <Container>
       <Content>
         <FormContainer>
+        <button className="btn-close" onClick={handleClose}/>
           <div tw="mx-auto max-w-4xl">
             <h2>Contact us</h2>
             <form action="#">
