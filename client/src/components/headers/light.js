@@ -12,10 +12,10 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 const Header = tw.header`
   flex justify-between items-center
-  max-w-screen-xl mx-auto
+  max-w-screen-xl mx-auto py-2
 `;
 
-export const NavLinks = tw.div`inline-block`;
+export const NavLinks = tw.div`inline-block mx-1 my-2`;
 
 /* hocus: stands for "on hover or focus"
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
@@ -29,7 +29,7 @@ export const NavLink = tw.a`
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0
   px-8 py-3 rounded bg-yellow-400	 text-gray-700
-  hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
+  hocus:bg-blue-900 hocus:text-gray-200 focus:shadow-outline
   border-b-0
 `;
 
@@ -72,10 +72,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
    */
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/#">How it Works</NavLink>
-      <NavLink href="/#">FAQs</NavLink>
-      <NavLink href="/#">News</NavLink>
-      <PrimaryLink href="/#" css={roundedHeaderButton && tw`rounded-full`} >Contact Us</PrimaryLink>
+      <PrimaryLink href="/contact-us" css={roundedHeaderButton && tw`rounded-full`} >Contact Us</PrimaryLink>
     </NavLinks>
   ];
 

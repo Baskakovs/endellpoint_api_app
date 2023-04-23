@@ -6,14 +6,11 @@ import { css } from "styled-components/macro";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 
-import defaultCardImage from "images/shield-icon.svg";
-
-import SupportIconImage from "images/support-icon.svg";
-import ShieldIconImage from "images/shield-icon.svg";
-import CustomizeIconImage from "images/customize-icon.svg";
-import FastIconImage from "images/fast-icon.svg";
-import ReliableIconImage from "images/reliable-icon.svg";
-import SimpleIconImage from "images/simple-icon.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMobileScreenButton } from "@fortawesome/free-solid-svg-icons";
+import { faBox } from "@fortawesome/free-solid-svg-icons";
+import { faBarcode } from "@fortawesome/free-solid-svg-icons";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
 
 const Container = tw.div`relative bg-yellow-400 -mx-8 px-8 text-gray-700`;
 
@@ -33,9 +30,10 @@ const Column = styled.div`
 const Card = styled.div`
   ${tw`flex flex-col items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
   .imageContainer {
-    ${tw`bg-gray-100 text-center rounded-full p-5 flex-shrink-0`}
+    ${tw`bg-gray-100 text-center p-6 flex-shrink-0`}
+    border-radius: 50%;
     img {
-      ${tw`w-6 h-6`}
+      ${tw`w-4 h-4`}
     }
   }
 
@@ -50,7 +48,7 @@ const Card = styled.div`
   .description {
     ${tw`mt-2 font-normal text-gray-600 leading-snug`}
   }
-`;
+};`
 
 export default ({
   cards = null,
@@ -76,21 +74,21 @@ export default ({
 
   const defaultCards = [
     {
-      imageSrc: "1",
+      icon: faMobileScreenButton,
       title: "Download the Endell Point app for faster checkout",
       description: "Our app will be available on the App Store and Google Play Store soon."
     },
     { 
-      imageSrc: "1", 
+      icon: faTruck, 
       title: "Order your parcel to an Endell Point location",
       description: "You can a choose a location that is most convenient for you. "
      },
     { 
-      imageSrc: "1", 
+      icon: faBarcode, 
       title: "Upload your tracking number to the Endell Point app",
       description: "You can track your parcel from the app and get updates on your delivery."
     },
-    { imageSrc: "1", 
+    { icon: faBox,
       title: "Collect you parcel",
       description: "You can collect your parcel at your convenience."
     },
@@ -100,6 +98,7 @@ export default ({
   if (!cards) cards = defaultCards;
 
   return (
+    <div className="w-100">
     <Container>
       <ThreeColumnContainer>
         {subheading && <Subheading>{subheading}</Subheading>}
@@ -110,12 +109,15 @@ export default ({
           <Column key={i}>
             <Card>
               <span className="imageContainer">
-                <img src={card.imageSrc || defaultCardImage} alt="" />
+                <FontAwesomeIcon 
+                icon={card.icon} 
+                style={{color: "#333333",}}
+                size="xl"/>
               </span>
               <span className="textContainer">
                 <span className="title">{card.title || "Fully Secure"}</span>
                 <p className="description">
-                  {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud."}
+                  {card.description}
                 </p>
               </span>
             </Card>
@@ -123,5 +125,6 @@ export default ({
         ))}
       </ThreeColumnContainer>
     </Container>
+    </div>
   );
 };

@@ -7,23 +7,18 @@ import { SectionHeading } from "components/misc/Headings.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 
 const Row = tw.div`flex flex-col items-center lg:flex-row -mb-10 lg:mb-20`;
-const Heading = tw(SectionHeading)`text-left lg:text-4xl xl:text-5xl`;
-
-const PopularPostsContainer = tw.div`lg:w-full`;
-const PostsContainer = tw.div`mt-12 flex flex-wrap justify-center sm:justify-start`;
-const Post = tw(motion.a)`block sm:w-64 cursor-pointer mb-16 last:mb-0 sm:mb-0 sm:mr-8 lg:mr-8 xl:mr-16 border border-gray-300 border-dashed border-2 p-4 rounded`;
+const Heading = tw(SectionHeading)`w-full text-gray-800`;
+const PopularPostsContainer = tw.div`lg:w-full mx-5`;
+const PostsContainer = tw.div`mt-12 flex flex-wrap justify-center`;
+const Post = tw(motion.a)`block sm:w-64 mb-16 last:mb-0 sm:mb-0 sm:mr-8 lg:mr-8 xl:mr-16 border border-gray-300 border-dashed border-2 p-4 rounded`;
 
 const Image = styled(motion.div)(props => [
   `background-image: url("${props.$imageSrc}");`,
   tw`h-64 bg-cover bg-center rounded`
 ]);
-const Title = tw.h5`mt-6 text-xl font-bold transition duration-300 group-hover:text-primary-500`;
-const Description = tw.p`mt-2 font-medium text-secondary-100 leading-loose text-sm`;
-const AuthorInfo = tw.div`mt-6 flex items-center`;
-const AuthorImage = tw.img`w-12 h-12 rounded-full`;
-const AuthorNameAndProfession = tw.div`ml-4`;
-const AuthorName = tw.h6`font-semibold text-lg`;
-const AuthorProfile = tw.p`text-secondary-100 text-sm`;
+const Title = tw.h5`mt-6 text-xl font-bold transition duration-300`;
+const Description = tw.p`mt-2 font-medium leading-loose text-sm`;
+const Date = tw.p`text-sm italic text-right font-medium text-gray-600`;
 
 
 const RecentPostsContainer = styled.div`
@@ -36,9 +31,6 @@ const RecentPostsContainer = styled.div`
   }
   ${Title} {
     ${tw`text-base xl:text-lg mt-0 mr-4 lg:max-w-xs`}
-  }
-  ${AuthorName} {
-    ${tw`mt-3 text-sm text-secondary-100 font-normal leading-none`}
   }
   ${Image} {
     ${tw`h-20 w-20 flex-shrink-0`}
@@ -56,9 +48,8 @@ export default ({news}) => {
     }
   };
 
-
   return (
-    <Container>
+    <Container className="FAQSContainer">
       <ContentWithPaddingXl>
         <Row>
           <PopularPostsContainer>
@@ -66,10 +57,12 @@ export default ({news}) => {
             <PostsContainer>
               {! Array.isArray(news) ? null :  
                 news.map((newss, index) => (
-                  <Post key={index} className="group" initial="rest" whileHover="hover" animate="rest">
+                  <Post key={index} className="group">
+                    <Date>{newss.date}</Date>
                     <Title>{newss.title}</Title>
-                    <Description>{newss.description}</Description>
-                    <p><i>{newss.date}</i></p>
+                    <Description>
+                      {newss.description}
+                    </Description>
                   </Post>
               ))}
             </PostsContainer>

@@ -4,9 +4,8 @@ import styled from "styled-components";
 import {Container as ContainerBase } from "components/misc/Layouts.js"
 import logo from "../../images/Logo.png";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
-import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
-import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
 import {PrimaryButton} from "components/misc/Buttons.js";
+import { useNavigate } from "react-router-dom";
 
 
 const Container = tw(ContainerBase)`bg-blue-900 text-gray-100 -mx-8 -mb-8`
@@ -36,7 +35,9 @@ const SocialLink = styled.a`
 
 const CopyrightText = tw.p`text-center mt-10 font-medium tracking-wide text-sm text-gray-600`
 export default () => {
+  const navigate = useNavigate();
   return (
+    <div className="w-100">
     <Container>
       <Content>
         <Row>
@@ -44,16 +45,15 @@ export default () => {
             <LogoImg src={logo} />
           </LogoContainer>
           <LinksContainer>
-            <Link href="#">How it works</Link>
-            <Link href="#">FAQs</Link>
-            <Link href="#">News</Link>
             <Link href="#">Terms & Conditions</Link>
-            <Link href="#">Contact Us</Link>
+            <Link href="/contact-us">Contact Us</Link>
           </LinksContainer>
           <SocialLinksContainer>
-            <SocialLink href="https://facebook.com">
+          <SocialLink>
+            <a href="https://www.facebook.com">
               <FacebookIcon />
-            </SocialLink>
+            </a>
+          </SocialLink>
           </SocialLinksContainer>
           <CopyrightText>
             &copy; Copyright 2023, Endellpoint. All rights reserved.
@@ -61,5 +61,6 @@ export default () => {
         </Row>
       </Content>
     </Container>
+    </div>
   );
 };

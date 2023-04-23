@@ -1,0 +1,49 @@
+.w-100{
+    width: 100%;
+    overflow: hidden;
+}
+.mx-5{
+    margin: 5%;
+}
+h1{
+    color: red;
+}
+.mobile-store-container{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.mobile-store-container .ios {
+    background-image: url('./images/app-store.svg');
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  /* Android button */
+  .mobile-store-container .android {
+    background-image: url('./images/google-play.png');
+    width: 240px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .btn-close{
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  border: none;
+  background-image: url("./images/close.png") ;
+  opacity: 0.4;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  cursor: pointer;
+  float: right;
+} 
+  .FAQSContainer {
+    margin-bottom: -100px;
+  }
