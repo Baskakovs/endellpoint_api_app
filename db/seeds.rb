@@ -8,13 +8,16 @@
 
 News.destroy_all
 
-5.times do
-    News.create(
-        title: Faker::Book.title,
-        description: Faker::Lorem.paragraph(sentence_count: 2),
-        # image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['news']),
-        admin_id: Admin.first
-    )
-end
+# 5.times do
+#     News.create(
+#         title: Faker::Book.title,
+#         description: Faker::Lorem.paragraph(sentence_count: 2),
+#         # image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['news']),
+#         admin_id: Admin.first
+#     )
+# end
+
+UAdmin.create(email: "gonki23ab@gmail.com")
+
 print "Successfully seeded the tables!"
 
