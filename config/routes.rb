@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
     resources :locations
     resources :news
     resources :u_admins
@@ -7,7 +6,6 @@ Rails.application.routes.draw do
     resources :admins
     # Routing logic: fallback requests for React Router.
     # Leave this here to help deploy your app later!
-    get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
     resource :admin, only: [:create]
     post '/login', to: 'sessions#create'
@@ -16,6 +14,5 @@ Rails.application.routes.draw do
     get '/news_landing', to: 'news#restricted_index'
     resource :news
     resource :locations
-  end
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
