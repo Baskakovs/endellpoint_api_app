@@ -6,6 +6,7 @@ import logo from "../../images/Logo.png";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
 import {PrimaryButton} from "components/misc/Buttons.js";
 import { useNavigate } from "react-router-dom";
+import PDF from '../../pdf/mobile_app.pdf'
 
 
 const Container = tw(ContainerBase)`bg-blue-900 text-gray-100 -mx-8 -mb-8`
@@ -45,7 +46,12 @@ export default () => {
             <LogoImg src={logo} />
           </LogoContainer>
           <LinksContainer>
-            <Link href="#">Terms & Conditions</Link>
+            <Link
+            href={PDF}
+            download="PDF"
+            target="_blank"
+            rel="noreferrer"
+            >Terms & Conditions</Link>
             <Link href="/contact-us">Contact Us</Link>
           </LinksContainer>
           <SocialLinksContainer>
