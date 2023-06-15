@@ -3,14 +3,19 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import LogoImage from "images/logo-light.svg";
+import LogoImage from "images/Logo.png";
 import { ReactComponent as FacebookIcon } from "images/facebook-icon.svg";
-import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
-import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
 
-const Container = tw.div`relative bg-gray-900 text-gray-100 -mx-8 -mb-8 px-8`;
+//PDFs import
+
+import MobileAppPDF from '../../pdf/mobile_app_policy.pdf'
+import WebsitePDF from '../../pdf/website_terms_of_use.pdf'
+import CookiesPDF from '../../pdf/cookies_policy.pdf'
+import PrivacyPolicy from "../../pdf/privacy_policy.pdf";
+
+const Container = tw.div`relative bg-blue-900 text-gray-100 -mb-8 `;
 const Content = tw.div`max-w-screen-xl mx-auto pt-16 pb-8`
-const FiveColumns = tw.div`flex flex-wrap justify-between`;
+const FiveColumns = tw.div`flex flex-wrap justify-start lg:pl-6`;
 
 const Column = tw.div`w-1/2 md:w-1/5 mb-8 md:mb-0 text-sm sm:text-base text-center md:text-left`;
 const CompanyColumn = tw.div`text-center md:text-left mb-16 lg:mb-0 w-full lg:w-1/5`;
@@ -27,7 +32,7 @@ const LogoText = tw.h5`ml-2 text-xl font-black`;
 
 const CompanyAddress = tw.p`mt-4 max-w-xs font-medium text-sm mx-auto lg:mx-0 lg:mr-4 leading-loose text-center lg:text-left`;
 
-const SocialLinksContainer = tw.div`mt-4 text-center lg:text-left`;
+const SocialLinksContainer = tw.div`mt-4 lg:pl-2 text-center lg:text-left`;
 const SocialLink = styled.a`
   ${tw`cursor-pointer inline-block p-2 rounded-full bg-gray-100 text-gray-900 hover:bg-gray-500 transition duration-300 mr-4 last:mr-0`}
   svg {
@@ -35,9 +40,9 @@ const SocialLink = styled.a`
   }
 `;
 
-const CopyrightAndCompanyInfoRow = tw.div`pb-0 text-sm font-normal flex flex-col sm:flex-row justify-between items-center`
+const CopyrightAndCompanyInfoRow = tw.div`pb-0 
+lg:pr-6 text-sm font-normal flex flex-col sm:flex-row justify-end items-center`
 const CopyrightNotice = tw.div``
-const CompanyInfo = tw.div``
 
 const Divider = tw.div`my-8 border-b-2 border-gray-800`
 export default () => {
@@ -47,27 +52,27 @@ export default () => {
         <FiveColumns>
           <CompanyColumn>
             <LogoContainer>
-              <LogoImg src={LogoImage} />
-              <LogoText>Treact Inc.</LogoText>
+              {/* <LogoImg src={LogoImage} /> */}
+              <LogoText>Endellpoint</LogoText>
             </LogoContainer>
-            <CompanyAddress>
+            {/* <CompanyAddress>
               123 Road, New Startup Building
               Carter Road, San Francisco
               California 40234
-            </CompanyAddress>
+            </CompanyAddress> */}
             <SocialLinksContainer>
-              <SocialLink href="https://facebook.com">
+              <SocialLink href="https://www.facebook.com/endellpoint">
                 <FacebookIcon />
               </SocialLink>
-              <SocialLink href="https://twitter.com">
+              {/* <SocialLink href="https://twitter.com">
                 <TwitterIcon />
               </SocialLink>
               <SocialLink href="https://youtube.com">
                 <YoutubeIcon />
-              </SocialLink>
+              </SocialLink> */}
             </SocialLinksContainer>
           </CompanyColumn>
-          <Column>
+          {/* <Column>
             <ColumnHeading>Quick Links</ColumnHeading>
             <LinkList>
               <LinkListItem>
@@ -83,8 +88,8 @@ export default () => {
                 <Link href="#">About Us</Link>
               </LinkListItem>
             </LinkList>
-          </Column>
-          <Column>
+          </Column> */}
+          {/* <Column>
             <ColumnHeading>Product</ColumnHeading>
             <LinkList>
               <LinkListItem>
@@ -100,21 +105,45 @@ export default () => {
                 <Link href="#">Team</Link>
               </LinkListItem>
             </LinkList>
-          </Column>
+          </Column> */}
           <Column>
-            <ColumnHeading>Legal</ColumnHeading>
+            <ColumnHeading>Terms & Conditions</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">GDPR</Link>
+                <Link
+                href={CookiesPDF}
+                download="CookiesPDF"
+                target="_blank"
+                rel="noreferrer">
+                  Cookies Policy
+                </Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Privacy Policy</Link>
+              <Link
+                href={WebsitePDF}
+                download="WebsitePDF"
+                target="_blank"
+                rel="noreferrer">
+                  Website Terms of Use
+                </Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Terms of Service</Link>
+              <Link
+                href={MobileAppPDF}
+                download="MobileAppPDF"
+                target="_blank"
+                rel="noreferrer">
+                  Mobile App T&Cs
+                </Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Disclaimer</Link>
+              <Link
+              href={PrivacyPolicy}
+              download="PrivacyPolicy"
+              target="_blank"
+              rel="noreferrer">
+                  Privacy Policy
+              </Link>
               </LinkListItem>
             </LinkList>
           </Column>
@@ -122,24 +151,17 @@ export default () => {
             <ColumnHeading>Contact</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                +1 (234) (567)-8901
+                +44 7513 115954
               </LinkListItem>
               <LinkListItem>
-                <Link href="mailto:support@servana.com">support@servana.com</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Sales</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Report Abuse</Link>
+                <Link href="mailto:gonki23ab@gmail.com">gonki23ab@gmail.com</Link>
               </LinkListItem>
             </LinkList>
           </Column>
         </FiveColumns>
         <Divider/>
         <CopyrightAndCompanyInfoRow>
-          <CopyrightNotice>&copy; Copyright 2020, Treact Inc.</CopyrightNotice>
-          <CompanyInfo>An Internet Company.</CompanyInfo>
+          <CopyrightNotice>&copy; Copyright 2023, Endellpoint. All rights reserved.</CopyrightNotice>
         </CopyrightAndCompanyInfoRow>
       </Content>
     </Container>

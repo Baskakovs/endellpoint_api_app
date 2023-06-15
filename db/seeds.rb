@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-News.destroy_all
 
 # 5.times do
 #     News.create(
@@ -18,6 +17,5 @@ News.destroy_all
 # end
 
 UAdmin.create(email: "gonki23ab@gmail.com")
-
-print "Successfully seeded the tables!"
+UAdmin.create(email: "angelina.s.bogdan@gmail.com")
 

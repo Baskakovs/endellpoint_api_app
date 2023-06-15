@@ -72,7 +72,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
    */
   const defaultLinks = [
     <NavLinks key={1}>
-      <PrimaryLink href="/contact-us" css={roundedHeaderButton && tw`rounded-full`} >Contact Us</PrimaryLink>
+      <PrimaryLink href="mailto:gonki23ab@gmail.com" css={roundedHeaderButton && tw`rounded-full`} >Contact Us</PrimaryLink>
     </NavLinks>
   ];
 
