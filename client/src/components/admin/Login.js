@@ -9,11 +9,10 @@ function Login(){
 
     const [errors, setErrors] = useState([])//errors from the front-end and the back-end from the login and signup forms
     const [login, setLogin] = useState(true)
+    console.log(errors, "erorrs")
 
     useEffect(()=>{setErrors()},[login])
 
-    console.log(errors)
-    
     return(
         <div className="container two-col height-100 align-content-center">
             <div className="m-a">

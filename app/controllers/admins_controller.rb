@@ -10,10 +10,10 @@ class AdminsController < ApplicationController
                 uadmin.destroy
                 render json: admin, status: :created
             else
-                render json: { errors: admin.errors.full_messages }, status: :unprocessable_entity
+                render json: { errors:  admin.errors.full_messages }, status: :unprocessable_entity
             end
         else
-            render json: { error: "This email is not associated with an admin account" }, status: 404
+            render json: { errors: "This email is not associated with an admin account" }, status: 404
         end
     end
 end

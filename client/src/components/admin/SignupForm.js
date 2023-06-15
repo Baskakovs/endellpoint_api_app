@@ -37,22 +37,19 @@ function SignupForm({setErrors}){
         e.preventDefault()
         validateInputs()
         if(validity){
-            console.log("1")
             fetch('/admin',{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(signUpForm)
             })
             .then(res => {
-                console.log("2")
                 if(res.ok){
-                    console.log("2")
                     res.json().then(user => {
                         handleLogin(user)
                         navigate('/admin')
                     })
-                }else{
-                    res.json().then(e =>setErrors(e.errors))
+                }else if(!res.ok ){
+                    res.json().then(e =>setErrors([e.errors]))
                 }
             })
         }else{
