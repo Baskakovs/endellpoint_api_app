@@ -19,7 +19,7 @@ import { Loader } from "@googlemaps/js-api-loader"
 // import DesignIllustration from "../../images/design-illustration.svg";
 import Illustration from '../../images/Illustration.png';
 
-const Container = tw.div`relative  mx-5 max-w-screen-xl`;
+const Container = tw.div`relative  mx-5 max-w-screen-xl mx-auto`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
 const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center lg:text-left`;
 const RightColumn = tw.div`
